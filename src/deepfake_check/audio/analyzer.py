@@ -23,6 +23,7 @@ from ..base import BaseAnalyzer, AnalysisResult
 class AudioAnalyzer(BaseAnalyzer):
     """Analyzer for detecting AI-generated or manipulated audio."""
     
+    # Supported audio file formats for analysis
     SUPPORTED_FORMATS = {'.mp3', '.wav', '.m4a', '.flac', '.ogg', '.aac', '.wma'}
     
     def __init__(self, verbose: bool = False):

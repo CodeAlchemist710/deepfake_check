@@ -21,6 +21,7 @@ from ..base import BaseAnalyzer, AnalysisResult
 class VideoAnalyzer(BaseAnalyzer):
     """Analyzer for detecting AI-generated or manipulated video."""
     
+    # Supported video file formats for analysis
     SUPPORTED_FORMATS = {'.mp4', '.avi', '.mov', '.mkv', '.flv', '.wmv', '.webm'}
     
     def __init__(self, verbose: bool = False, sample_frames: int = 30):
