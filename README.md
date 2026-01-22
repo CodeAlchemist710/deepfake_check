@@ -1,5 +1,3 @@
-Markdown
-```markdown
 # 🛡️ Deepfake-Check: Metadata & Signal Analyzer
 
 Deepfake-Check is a digital forensics tool designed to identify AI-generated media. Unlike typical AI detectors that use "black-box" neural networks, this tool focuses on **forensic artifacts**: digital fingerprints, metadata anomalies, and biological signal inconsistencies left behind by generative models.
@@ -48,22 +46,11 @@ Bash
 
 cd frontend
 npm install
-🏃 How to Run
+## 🏃 How to Run
+
 You will need two terminal tabs open:
 
-Tab A: Backend (API)
-
-Bash
-
-cd backend
-source venv/bin/activate
-uvicorn main:app --reload --port 8000
-Tab B: Frontend (UI)
-
-Bash
-
-cd frontend
-npm run dev
+### Tab A: Backend (API)
 Visit http://localhost:3000 to access the dashboard.
 
 🧪 Testing the Analysis
@@ -84,12 +71,7 @@ To avoid merge conflicts, please follow this flow:
 
 Pull latest changes: git pull origin main
 
-Create a feature branch: git checkout -b feature/your-feature-name
-
-Commit changes: git commit -m "Add: Noise residue extraction logic"
-
-Push and PR: git push origin feature/your-feature-name (then create a Pull Request on GitHub).
-
+Running the CLI Test:
 🗺️ Roadmap
 [ ] Implement rPPG (Remote Photoplethysmography) to detect heartbeats in video faces.
 
