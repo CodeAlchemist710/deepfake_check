@@ -4,6 +4,28 @@ Deepfake-Check is a digital forensics tool designed to identify AI-generated med
 
 ---
 
+## 📁 Project Structure
+
+```
+deepfake_check/
+├── backend/
+│   ├── main.py              # FastAPI application entry point
+│   ├── requirements.txt     # Python dependencies
+│   ├── api/                  # API route handlers
+│   └── core/                 # Analysis modules
+│       ├── audio.py          # Audio frequency analysis
+│       ├── metadata.py       # ExifTool metadata extraction
+│       └── video.py          # Visual noise analysis
+├── frontend/                 # Next.js web interface (see frontend/README.md)
+├── snapshots/                # Test media files directory
+├── docs/                     # Documentation
+├── docker-compose.yml        # Docker orchestration
+├── requirements.txt          # Root-level dependencies
+└── README.md
+```
+
+---
+
 ## 🚀 The Forensic Approach
 
 This project implements three primary layers of analysis:
@@ -25,49 +47,91 @@ This project implements three primary layers of analysis:
 ## ⚙️ Installation & Setup
 
 ### 1. System Prerequisites (Mac/Linux)
-
-You must have `exiftool` installed on your OS for the backend to function.
+You must have exiftool installed on your OS for the backend to function.
 
 ```bash
 brew install exiftool
 ```
 
 ### 2. Backend Setup
-```
+You will need two terminal tabs open to run the full application.
 
-Bash
+**Tab A: Backend (API)**
 
+```bash
 cd backend
-python3 -m venv venv
 source venv/bin/activate
-pip install -r requirements.txt
-
+uvicorn main:app --reload --port 8000
 ```
-3. Frontend Setup
 
-```
-Bash
+### 3. Frontend Setup
 
+**Tab B: Frontend (Next.js)**
+
+```bash
 cd frontend
 npm install
-
+npm run dev
 ```
-## 🏃 How to Run
 
-You will need two terminal tabs open:
+Visit http://localhost:3000 to access the dashboard. The frontend is configured to send requests to the FastAPI server at http://localhost:8000.
 
-### Tab A: Backend (API)
+---
 
-Visit http://localhost:3000 to access the dashboard.
+### Running the Metadata Extractor (CLI)
 
-🧪 Testing the Analysis
-To test the system, place sample files in the snapshots/ folder:
+You can also run the metadata extractor directly on a specific file:
 
-Authentic Sample: A video/audio file recorded directly from your iPhone/Android.
+```bash
+python3 -m core.metadata snapshots/your_test_file.mp4
+```
 
-AI Sample: A file generated via ElevenLabs, Sora, or HeyGen.
+## 🧪 Testing the Analysis
 
-Running the CLI Test:
+To test the system, place sample files in the snapshots/ folder. Use the following for comparison:
 
+- **Authentic Sample:** A video or audio file recorded directly from your iPhone/Android hardware.
+- **AI Sample:** A file generated via ElevenLabs (audio), Sora, or HeyGen (video).
+
+### Running the CLI Test
+
+Before using the web UI, you can verify the backend logic directly via the terminal:
+
+```bash
+cd backend
+python3 -m core.metadata ../snapshots/your_test_file.mp4
+python3 -m core.audio ../snapshots/your_test_file.mp4
+python3 -m core.video ../snapshots/your_test_file.mp4
+```
+
+---
+
+## 🐳 Docker Setup (Optional)
+
+To run the entire stack with Docker:
+
+```bash
+docker-compose up --build
+```
+
+---
+
+## 📄 API Endpoints
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| `GET`  | `/` | Health check - returns backend status |
+
+> More endpoints will be added as the API develops.
+
+---
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/your-feature`)
+3. Commit your changes (`git commit -m 'Add your feature'`)
+4. Push to the branch (`git push origin feature/your-feature`)
+5. Open a Pull Request
 
 ---
