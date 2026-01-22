@@ -206,7 +206,7 @@ class AudioAnalyzer(BaseAnalyzer):
             }
         
         # Skewness
-        skewness = scipy.stats.skewness(y)
+        skewness = scipy.stats.skew(y)
         
         # Check for unusual skewness
         if abs(skewness) > 2.0:
