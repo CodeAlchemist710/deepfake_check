@@ -41,16 +41,23 @@ cd backend
 python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
+
+```
 3. Frontend Setup
+
+```
 Bash
 
 cd frontend
 npm install
+
+```
 ## 🏃 How to Run
 
 You will need two terminal tabs open:
 
 ### Tab A: Backend (API)
+
 Visit http://localhost:3000 to access the dashboard.
 
 🧪 Testing the Analysis
@@ -62,34 +69,5 @@ AI Sample: A file generated via ElevenLabs, Sora, or HeyGen.
 
 Running the CLI Test:
 
-Bash
-
-# Example script to test metadata extraction
-python3 backend/core/metadata.py snapshots/test_video.mp4
-🤝 Contributor Workflow
-To avoid merge conflicts, please follow this flow:
-
-Pull latest changes: git pull origin main
-
-Running the CLI Test:
-🗺️ Roadmap
-[ ] Implement rPPG (Remote Photoplethysmography) to detect heartbeats in video faces.
-
-[ ] Add Spectral Centroid analysis for audio.
-
-[ ] Generate PDF Forensic Reports.
-
-Disclaimer: This tool is for educational and forensic research purposes. No detector is 100% accurate; always use manual verification for critical evidence.
-
 
 ---
-
-### Why this README works
-* **Scientific Credibility:** It explains *how* it detects fakes (PRNU, Spectral gaps), which makes it a high-level portfolio piece.
-* **Clear Instructions:** Your partner can clone the repo and be running in under 5 minutes.
-* **Standardization:** It defines the port numbers ($8000$ for backend, $3000$ for frontend) so your API calls don't break.
-
-
-
-### Next Step for you:
-Now that the README is set, would you like the **Python code for the `metadata.py` module** so you can actually start extracting "Suspicion Scores" from files?
